@@ -31,8 +31,7 @@ export async function generateItinerary(prefs, onProgress = () => {}) {
   const alloc    = allocateBudget(prefs.budget.usd);
   const budgetTier = prefs.budget.tier;
 
-  let currentDate = new Date(prefs.startDate);
-  let dayIndex    = 0;
+  let dayIndex = 0;
 
   // Step 1: Geocode all cities in parallel
   onProgress(5, 'Locating destinations…');
@@ -40,20 +39,8 @@ export async function generateItinerary(prefs, onProgress = () => {}) {
     prefs.cities.map((c) => geocodeCity(c.name))
   );
 
-  // Step 2: Fetch weather for all cities in parallel
-  onProgress(20, 'Fetching weather forecasts…');
-  const cityWeathers = await Promise.all(
-    prefs.cities.map((city, i) => {
-      const geo      = geoResults[i];
-      if (!geo) return Promise.resolve([]);
-      const cityStart = new Date(currentDate);
-      // advance currentDate tracker for this city
-      // We'll reset below
-      return getWeatherForecast(geo, city.stayStart, city.stayEnd);
-    })
-  );
-
-  // Calculate stay windows per city
+  // Step 2: Calculate stay windows per city
+  onProgress(20, 'Planning stay windows…');
   let walkingDate = new Date(prefs.startDate);
   const cityStays = prefs.cities.map((city, i) => {
     const stayStart = walkingDate.toISOString().split('T')[0];
@@ -62,8 +49,8 @@ export async function generateItinerary(prefs, onProgress = () => {}) {
     return { ...city, stayStart, stayEnd, geo: geoResults[i] };
   });
 
-  // Fetch weather properly with correct dates
-  onProgress(30, 'Analyzing weather conditions…');
+  // Step 3: Fetch weather for correct date ranges
+  onProgress(35, 'Fetching weather forecasts…');
   const weatherMaps = await Promise.all(
     cityStays.map(async (city) => {
       if (!city.geo) return {};

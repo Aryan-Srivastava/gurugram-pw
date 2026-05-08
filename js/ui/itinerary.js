@@ -283,7 +283,3 @@ export function flashDayCard(dayIndex) {
 }
 
 function capitalize(s) { return s ? s[0].toUpperCase() + s.slice(1) : ''; }
-function formatTime(iso) {
-  try { return new Date(iso).toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:false }); }
-  catch { return iso; }
-}
