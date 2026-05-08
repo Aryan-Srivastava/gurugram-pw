@@ -1,40 +1,48 @@
-import assert from 'assert';
+import { test } from 'node:test';
+import assert from 'node:assert';
 import { parsePreferences, validateStep } from '../public/js/engine/parser.js';
 
-// Setup mock for global Date
-const origDate = global.Date;
+test('Parser: Validates basic form preferences', () => {
+  const validRaw = {
+    cities: [{ name: 'Paris', nights: 3 }],
+    startDate: '2026-08-01',
+    endDate: '2026-08-05',
+    budget: 2000,
+    currency: 'USD',
+    style: 'cultural',
+    groupSize: 2,
+    flightClass: 'economy',
+    interests: ['museums', 'food']
+  };
 
-// Basic validation test
-const validRaw = {
-  cities: [{ name: 'Paris', nights: 3 }],
-  startDate: '2026-08-01',
-  endDate: '2026-08-05', // 4 nights total
-  budget: 2000,
-  currency: 'USD',
-  style: 'cultural',
-  groupSize: 2,
-  flightClass: 'economy',
-  interests: ['museums', 'food']
-};
-
-try {
-  // Test 1: Parser outputs normalized nights correctly (4 total nights / 1 city = 4 nights)
   const prefs = parsePreferences(validRaw);
-  assert.strictEqual(prefs.totalDays, 4, 'Total days should be 4');
-  assert.strictEqual(prefs.cities[0].nights, 4, 'City nights should scale to 4');
-  assert.strictEqual(prefs.budget.usd, 2000, 'Budget should be 2000');
+  assert.strictEqual(prefs.totalDays, 4);
+  assert.strictEqual(prefs.cities[0].nights, 4);
+  assert.strictEqual(prefs.budget.usd, 2000);
+});
 
-  // Test 2: Missing data validation
+test('Parser: Throws error when missing destinations', () => {
   assert.throws(() => {
-    parsePreferences({ ...validRaw, cities: [] });
+    parsePreferences({
+      cities: [],
+      startDate: '2026-08-01',
+      endDate: '2026-08-05'
+    });
   }, /At least one destination is required/);
+});
 
-  // Test 3: validateStep logic
-  const step1Valid = validateStep(1, validRaw);
-  assert.strictEqual(step1Valid.valid, true, 'Step 1 should be valid with correct data');
+test('Parser: Step 1 validation logic', () => {
+  const step1Valid = validateStep(1, {
+    cities: [{ name: 'Paris', nights: 3 }],
+    startDate: '2026-08-01',
+    endDate: '2026-08-05'
+  });
+  assert.strictEqual(step1Valid.valid, true);
 
-  console.log('✅ parser.test.js passed');
-} catch (err) {
-  console.error('❌ parser.test.js failed:', err.message);
-  process.exit(1);
-}
+  const step1Invalid = validateStep(1, {
+    cities: [],
+    startDate: '2026-08-01',
+    endDate: '2026-08-05'
+  });
+  assert.strictEqual(step1Invalid.valid, false);
+});

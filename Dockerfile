@@ -1,17 +1,20 @@
-# ── Build Stage: Copy static assets ──────────────────────────
 FROM nginx:alpine
+
+# Default port for Cloud Run
+ENV PORT=8080
 
 # Remove default nginx config
 RUN rm /etc/nginx/conf.d/default.conf
 
-# Copy our custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy the nginx template
+# The official nginx image automatically processes files in /etc/nginx/templates/ using envsubst
+COPY default.conf.template /etc/nginx/templates/default.conf.template
 
-# Copy static app files from public/ into nginx serve directory
+# Copy static app files
 COPY public/ /usr/share/nginx/html/
 
-# Cloud Run expects the container to listen on PORT env var (default 8080)
-EXPOSE 8080
+# Expose the port (informative)
+EXPOSE $PORT
 
-# Start nginx in foreground
+# Start nginx
 CMD ["nginx", "-g", "daemon off;"]

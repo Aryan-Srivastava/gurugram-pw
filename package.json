@@ -4,6 +4,6 @@
   "description": "Travel Planning & Experience Engine",
   "type": "module",
   "scripts": {
-    "test": "node tests/parser.test.js"
+    "test": "node --test tests/"
   }
 }
