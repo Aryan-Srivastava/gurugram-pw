@@ -8,6 +8,7 @@ import { getAmenityIcon }          from '../api/hotels.js';
 import { getFlightStatusDisplay, formatDuration } from '../api/flights.js';
 import { getBudgetStatus, getBudgetPct, getBreakdownRows } from '../engine/budget.js';
 import { AppState }                from '../state.js';
+import { escapeHTML }              from '../utils/sanitize.js';
 
 /** Render the full itinerary section */
 export function renderItinerary(container, itinerary, prefs, onReplan) {
@@ -24,8 +25,8 @@ export function renderItinerary(container, itinerary, prefs, onReplan) {
   // City nav tabs
   const cities = [...new Set(itinerary.map((d) => d.cityName))];
   const cityNav = cities.map((c, i) => `
-    <button class="city-nav-btn ${i === 0 ? 'active' : ''}" data-city="${c}" id="city-nav-${i}">
-      📍 ${c}
+    <button class="city-nav-btn ${i === 0 ? 'active' : ''}" data-city="${escapeHTML(c)}" id="city-nav-${i}">
+      📍 ${escapeHTML(c)}
     </button>`).join('');
 
   // Day cards
@@ -73,7 +74,7 @@ function renderDayCard(day, i, prefs, onReplan) {
 
   return `
     <article class="day-card ${disrupted} anim-fade-up delay-${Math.min(i + 1, 8)}"
-             id="day-card-${i}" data-city="${day.cityName}">
+             id="day-card-${i}" data-city="${escapeHTML(day.cityName)}">
 
       ${day.disrupted ? `
         <div class="disruption-banner">
@@ -86,7 +87,7 @@ function renderDayCard(day, i, prefs, onReplan) {
         <div class="day-number-block">
           <div class="day-number-badge">D${i + 1}</div>
           <div class="day-info">
-            <div class="day-title">📍 ${day.cityName}${day.country ? `, ${day.country}` : ''}</div>
+            <div class="day-title">📍 ${escapeHTML(day.cityName)}${day.country ? `, ${escapeHTML(day.country)}` : ''}</div>
             <div class="day-date">${formatShort(day.date)}${day.isTravelDay ? ' · Travel Day' : ''}</div>
           </div>
         </div>

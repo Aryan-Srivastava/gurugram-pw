@@ -6,6 +6,7 @@ import { STYLE_META, INTEREST_META, VALID_STYLES, VALID_INTERESTS } from '../eng
 import { SUPPORTED_CURRENCIES } from '../utils/currency.js';
 import { minTripDate, addDays } from '../utils/date.js';
 import { getPopularCities } from '../api/geocoding.js';
+import { escapeHTML } from '../utils/sanitize.js';
 
 /** Internal form state */
 let _formState = {
@@ -109,13 +110,13 @@ function renderCityRow(city, index) {
   return `
     <div class="city-row" id="city-row-${index}">
       <div class="input-group" style="flex:1;">
-        ${index === 0 ? `<label class="input-label">City / Destination</label>` : ''}
+        ${index === 0 ? `<label class="input-label" for="city-name-${index}">City / Destination</label>` : ''}
         <input class="input-field" type="text" list="city-suggestions"
-               id="city-name-${index}" placeholder="e.g. Paris" value="${city.name}"
+               id="city-name-${index}" placeholder="e.g. Paris" value="${escapeHTML(city.name)}"
                autocomplete="off">
       </div>
       <div class="input-group city-nights">
-        ${index === 0 ? `<label class="input-label">Nights</label>` : ''}
+        ${index === 0 ? `<label class="input-label" for="city-nights-${index}">Nights</label>` : ''}
         <input class="input-field" type="number" id="city-nights-${index}"
                min="1" max="30" value="${city.nights}" style="text-align:center;">
       </div>

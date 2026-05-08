@@ -4,6 +4,7 @@
 
 import { AppState, dismissAlert } from '../state.js';
 import { timeAgo } from '../utils/date.js';
+import { escapeHTML } from '../utils/sanitize.js';
 
 const SEVERITY_ICONS = { info:'ℹ️', warning:'⚠️', critical:'🚨', success:'✅' };
 
@@ -38,7 +39,7 @@ export function renderAlertsPanel(container, onReplan) {
         <span class="alert-type-icon" style="font-size:11px;color:var(--text-muted);">${getTypeLabel(alert.type)}</span>
         <span class="alert-time">${timeAgo(alert.timestamp)}</span>
       </div>
-      <div class="alert-message">${alert.message}</div>
+      <div class="alert-message">${escapeHTML(alert.message)}</div>
       <div class="alert-actions">
         ${alert.action === 'replan' ? `
           <button class="alert-action-btn replan" data-action="replan" data-day="${alert.affectedDay}" data-id="${alert.id}">
@@ -122,8 +123,8 @@ export function showToast({ title, message, type = 'info', duration = 4500 }) {
   toast.innerHTML = `
     <span class="toast-icon">${TYPE_ICONS[type] ?? 'ℹ️'}</span>
     <div class="toast-body">
-      <div class="toast-title">${title}</div>
-      ${message ? `<div class="toast-msg">${message}</div>` : ''}
+      <div class="toast-title">${escapeHTML(title)}</div>
+      ${message ? `<div class="toast-msg">${escapeHTML(message)}</div>` : ''}
     </div>
     <button class="toast-close btn-ghost btn-icon-sm" aria-label="Close">✕</button>
   `;
