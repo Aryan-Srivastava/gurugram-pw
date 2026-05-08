@@ -1,0 +1,159 @@
+/* ============================================================
+   DESIGN TOKENS — Travel Planning & Experience Engine
+   ============================================================ */
+
+:root {
+  /* ── Background ─────────────────────────────────────────── */
+  --bg-primary:    #080d1a;
+  --bg-surface:    #0f1629;
+  --bg-elevated:   #162035;
+  --bg-card:       #1a2540;
+  --bg-card-hover: #1f2d4e;
+  --bg-overlay:    rgba(8, 13, 26, 0.85);
+  --bg-glass:      rgba(255, 255, 255, 0.04);
+  --bg-glass-hover:rgba(255, 255, 255, 0.07);
+
+  /* ── Accent Colors ───────────────────────────────────────── */
+  --accent-indigo:      #6366f1;
+  --accent-indigo-light:#818cf8;
+  --accent-indigo-dark: #4f46e5;
+  --accent-cyan:        #06b6d4;
+  --accent-cyan-light:  #22d3ee;
+  --accent-amber:       #f59e0b;
+  --accent-amber-light: #fbbf24;
+  --accent-emerald:     #10b981;
+  --accent-emerald-light:#34d399;
+  --accent-rose:        #f43f5e;
+  --accent-rose-light:  #fb7185;
+  --accent-violet:      #8b5cf6;
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
+  --text-inverse:   #0f1629;
+
+  /* ── Borders ─────────────────────────────────────────────── */
+  --border:         rgba(255, 255, 255, 0.07);
+  --border-strong:  rgba(255, 255, 255, 0.14);
+  --border-accent:  rgba(99, 102, 241, 0.35);
+  --border-cyan:    rgba(6, 182, 212, 0.35);
+
+  /* ── Gradients ───────────────────────────────────────────── */
+  --grad-hero:       linear-gradient(135deg, #080d1a 0%, #0d1530 50%, #111e3d 100%);
+  --grad-indigo:     linear-gradient(135deg, #6366f1, #8b5cf6);
+  --grad-cyan:       linear-gradient(135deg, #06b6d4, #6366f1);
+  --grad-amber:      linear-gradient(135deg, #f59e0b, #ef4444);
+  --grad-emerald:    linear-gradient(135deg, #10b981, #06b6d4);
+  --grad-card:       linear-gradient(145deg, #1a2540, #162035);
+  --grad-surface:    linear-gradient(180deg, #0f1629 0%, #080d1a 100%);
+
+  /* ── Shadows / Glows ─────────────────────────────────────── */
+  --shadow-sm:      0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md:      0 4px 20px rgba(0,0,0,0.5);
+  --shadow-lg:      0 8px 40px rgba(0,0,0,0.6);
+  --shadow-xl:      0 20px 60px rgba(0,0,0,0.7);
+  --glow-indigo:    0 0 30px rgba(99,102,241,0.3);
+  --glow-indigo-lg: 0 0 60px rgba(99,102,241,0.25);
+  --glow-cyan:      0 0 30px rgba(6,182,212,0.3);
+  --glow-amber:     0 0 20px rgba(245,158,11,0.35);
+  --glow-rose:      0 0 20px rgba(244,63,94,0.35);
+  --glow-emerald:   0 0 20px rgba(16,185,129,0.35);
+
+  /* ── Spacing ─────────────────────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+  /* ── Border Radius ───────────────────────────────────────── */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-full: 9999px;
+
+  /* ── Typography Scale ────────────────────────────────────── */
+  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   17px;
+  --text-xl:   20px;
+  --text-2xl:  26px;
+  --text-3xl:  32px;
+  --text-4xl:  42px;
+  --text-5xl:  56px;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-black:   800;
+
+  --leading-tight:  1.2;
+  --leading-snug:   1.4;
+  --leading-normal: 1.6;
+
+  /* ── Animation ───────────────────────────────────────────── */
+  --anim-fast:   150ms ease-out;
+  --anim-base:   250ms ease-in-out;
+  --anim-slow:   400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --anim-enter:  500ms cubic-bezier(0.22, 1, 0.36, 1);
+  --anim-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-Index ─────────────────────────────────────────────── */
+  --z-base:    1;
+  --z-card:    10;
+  --z-sticky:  100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-toast:   400;
+  --z-nav:     500;
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  --container-max:  1280px;
+  --nav-height:     64px;
+  --sidebar-width:  320px;
+  --form-max:       640px;
+}
+
+/* Light mode overrides (minimal — dark is primary) */
+[data-theme="light"] {
+  --bg-primary:    #f0f4ff;
+  --bg-surface:    #ffffff;
+  --bg-elevated:   #f8faff;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f3f6ff;
+  --bg-glass:      rgba(0, 0, 0, 0.03);
+  --bg-glass-hover:rgba(0, 0, 0, 0.05);
+  --bg-overlay:    rgba(240, 244, 255, 0.9);
+
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #94a3b8;
+  --text-inverse:   #f1f5f9;
+
+  --border:         rgba(0, 0, 0, 0.08);
+  --border-strong:  rgba(0, 0, 0, 0.15);
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:  0 4px 20px rgba(0,0,0,0.1);
+  --shadow-lg:  0 8px 40px rgba(0,0,0,0.12);
+  --shadow-xl:  0 20px 60px rgba(0,0,0,0.15);
+
+  --grad-hero:  linear-gradient(135deg, #eef2ff 0%, #f0f9ff 50%, #f5f3ff 100%);
+  --grad-card:  linear-gradient(145deg, #ffffff, #f8faff);
+  --grad-surface: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
+}

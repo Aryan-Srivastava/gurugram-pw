@@ -1,0 +1,101 @@
+/**
+ * activities.js — Curated activity database per city
+ * Tags match VALID_INTERESTS from parser.js
+ */
+
+export const ACTIVITY_DATABASE = {
+  paris: [
+    { id:'par-1', name:'Louvre Museum', desc:'World-famous art & antiquities', icon:'🏛️', type:'museum', weatherType:'indoor', tags:['museums','art','history'], cost:20, duration:'3h', rating:9.5, preferredSlot:'morning' },
+    { id:'par-2', name:'Eiffel Tower', desc:'Iconic iron lattice tower with panoramic views', icon:'🗼', type:'culture', weatherType:'outdoor', tags:['architecture','photography'], cost:28, duration:'2h', rating:9.2, preferredSlot:'afternoon' },
+    { id:'par-3', name:'Seine River Cruise', desc:'Scenic boat ride past Parisian landmarks', icon:'🛥️', type:'culture', weatherType:'outdoor', tags:['photography','history'], cost:17, duration:'1h', rating:8.8, preferredSlot:'evening' },
+    { id:'par-4', name:'Montmartre & Sacré-Cœur', desc:'Bohemian hilltop village & basilica', icon:'⛪', type:'culture', weatherType:'outdoor', tags:['art','history','architecture'], cost:0, duration:'3h', rating:9.0, preferredSlot:'morning' },
+    { id:'par-5', name:'Musée d\'Orsay', desc:'Impressionist masterpieces in a former railway station', icon:'🎨', type:'museum', weatherType:'indoor', tags:['museums','art'], cost:16, duration:'2h', rating:9.3, preferredSlot:'afternoon' },
+    { id:'par-6', name:'Marais Food Tour', desc:'Sample pastries, cheese, and wine in historic Le Marais', icon:'🥐', type:'food', weatherType:'indoor', tags:['food'], cost:65, duration:'3h', rating:9.4, preferredSlot:'afternoon' },
+    { id:'par-7', name:'Paris Nightlife – Oberkampf', desc:'Trendy bars and live music in the 11th', icon:'🎷', type:'nightlife', weatherType:'indoor', tags:['nightlife','music'], cost:25, duration:'4h', rating:8.6, preferredSlot:'evening' },
+    { id:'par-8', name:'Versailles Palace', desc:'Opulent royal palace & stunning gardens', icon:'🏰', type:'culture', weatherType:'outdoor', tags:['history','architecture'], cost:20, duration:'5h', rating:9.4, preferredSlot:'morning' },
+  ],
+  tokyo: [
+    { id:'tyo-1', name:'Senso-ji Temple', desc:'Tokyo\'s oldest Buddhist temple in Asakusa', icon:'⛩️', type:'culture', weatherType:'outdoor', tags:['history','architecture','photography'], cost:0, duration:'2h', rating:9.1, preferredSlot:'morning' },
+    { id:'tyo-2', name:'Tsukiji Outer Market', desc:'Fresh sushi breakfast and street food', icon:'🍣', type:'food', weatherType:'outdoor', tags:['food','photography'], cost:30, duration:'2h', rating:9.3, preferredSlot:'morning' },
+    { id:'tyo-3', name:'Shibuya Crossing & Shopping', desc:'Iconic scramble crossing and retail therapy', icon:'🛍️', type:'shopping', weatherType:'outdoor', tags:['shopping','photography'], cost:0, duration:'3h', rating:8.8, preferredSlot:'afternoon' },
+    { id:'tyo-4', name:'teamLab Borderless', desc:'Immersive digital art museum', icon:'🎨', type:'museum', weatherType:'indoor', tags:['art','museums'], cost:32, duration:'3h', rating:9.5, preferredSlot:'afternoon' },
+    { id:'tyo-5', name:'Shinjuku Golden Gai', desc:'Tiny bars, big atmosphere — classic Tokyo nightlife', icon:'🍺', type:'nightlife', weatherType:'indoor', tags:['nightlife','food'], cost:40, duration:'3h', rating:9.0, preferredSlot:'evening' },
+    { id:'tyo-6', name:'Harajuku & Meiji Shrine', desc:'Pop fashion street + serene forested shrine', icon:'🌲', type:'culture', weatherType:'outdoor', tags:['nature','architecture','photography'], cost:0, duration:'3h', rating:8.9, preferredSlot:'morning' },
+    { id:'tyo-7', name:'Mt. Fuji Day Trip', desc:'Japan\'s iconic volcano and surrounding lakes', icon:'🗻', type:'adventure', weatherType:'outdoor', tags:['hiking','nature','photography'], cost:50, duration:'9h', rating:9.6, preferredSlot:'morning' },
+    { id:'tyo-8', name:'Ramen Making Class', desc:'Hand-craft authentic Tokyo ramen with a local chef', icon:'🍜', type:'food', weatherType:'indoor', tags:['food'], cost:55, duration:'2.5h', rating:9.2, preferredSlot:'afternoon' },
+  ],
+  'new york': [
+    { id:'nyc-1', name:'Central Park Walk', desc:'Stroll through 843 acres of urban parkland', icon:'🌳', type:'nature', weatherType:'outdoor', tags:['nature','photography'], cost:0, duration:'2h', rating:8.8, preferredSlot:'morning' },
+    { id:'nyc-2', name:'Metropolitan Museum of Art', desc:'One of the world\'s greatest art collections', icon:'🏛️', type:'museum', weatherType:'indoor', tags:['museums','art','history'], cost:25, duration:'3h', rating:9.4, preferredSlot:'morning' },
+    { id:'nyc-3', name:'Brooklyn Bridge Walk', desc:'Iconic bridge walk with Manhattan skyline views', icon:'🌉', type:'culture', weatherType:'outdoor', tags:['architecture','photography'], cost:0, duration:'1.5h', rating:9.1, preferredSlot:'afternoon' },
+    { id:'nyc-4', name:'Chelsea Food Market', desc:'Artisan vendors and global street food', icon:'🌮', type:'food', weatherType:'indoor', tags:['food','shopping'], cost:30, duration:'2h', rating:8.9, preferredSlot:'afternoon' },
+    { id:'nyc-5', name:'Broadway Show', desc:'World-class musical theatre on the Great White Way', icon:'🎭', type:'culture', weatherType:'indoor', tags:['music','art'], cost:130, duration:'3h', rating:9.5, preferredSlot:'evening' },
+    { id:'nyc-6', name:'High Line Park', desc:'Elevated park on former rail line with city art', icon:'🌿', type:'nature', weatherType:'outdoor', tags:['nature','art','architecture'], cost:0, duration:'2h', rating:9.0, preferredSlot:'afternoon' },
+    { id:'nyc-7', name:'Rooftop Bar – Top of the Rock', desc:'360° views of Manhattan at sunset', icon:'🌆', type:'nightlife', weatherType:'outdoor', tags:['photography','nightlife'], cost:40, duration:'2h', rating:9.3, preferredSlot:'evening' },
+  ],
+  rome: [
+    { id:'rom-1', name:'Colosseum & Forum', desc:'Ancient amphitheatre and Roman civic heart', icon:'🏛️', type:'culture', weatherType:'outdoor', tags:['history','architecture'], cost:18, duration:'3h', rating:9.6, preferredSlot:'morning' },
+    { id:'rom-2', name:'Vatican Museums & Sistine Chapel', desc:'Michelangelo\'s ceiling masterpiece', icon:'⛪', type:'museum', weatherType:'indoor', tags:['museums','art','history'], cost:27, duration:'4h', rating:9.5, preferredSlot:'morning' },
+    { id:'rom-3', name:'Trastevere Food Walk', desc:'Authentic Roman trattorias and street food', icon:'🍕', type:'food', weatherType:'outdoor', tags:['food','history'], cost:45, duration:'3h', rating:9.2, preferredSlot:'afternoon' },
+    { id:'rom-4', name:'Trevi Fountain & Gelato', desc:'Toss a coin, taste artisan gelato', icon:'⛲', type:'culture', weatherType:'outdoor', tags:['photography','history'], cost:5, duration:'1h', rating:8.9, preferredSlot:'evening' },
+    { id:'rom-5', name:'Borghese Gallery', desc:'Bernini sculptures & Caravaggio paintings', icon:'🎨', type:'museum', weatherType:'indoor', tags:['art','museums'], cost:14, duration:'2h', rating:9.3, preferredSlot:'morning' },
+  ],
+  barcelona: [
+    { id:'bcn-1', name:'Sagrada Família', desc:'Gaudí\'s unfinished Gothic-Art Nouveau basilica', icon:'⛪', type:'culture', weatherType:'outdoor', tags:['architecture','history'], cost:26, duration:'2h', rating:9.6, preferredSlot:'morning' },
+    { id:'bcn-2', name:'La Boqueria Market', desc:'Vibrant covered market for local produce & tapas', icon:'🥘', type:'food', weatherType:'indoor', tags:['food','shopping'], cost:20, duration:'2h', rating:9.0, preferredSlot:'morning' },
+    { id:'bcn-3', name:'Park Güell', desc:'Mosaic wonderland with city panoramas', icon:'🦎', type:'culture', weatherType:'outdoor', tags:['art','architecture','photography'], cost:10, duration:'2h', rating:9.1, preferredSlot:'afternoon' },
+    { id:'bcn-4', name:'Barceloneta Beach', desc:'Golden beach with beach bars and volleyball', icon:'🏖️', type:'beach', weatherType:'outdoor', tags:['beaches','sports'], cost:0, duration:'3h', rating:8.7, preferredSlot:'afternoon' },
+    { id:'bcn-5', name:'El Born Tapas Tour', desc:'Craft cocktails and pintxos in a medieval quarter', icon:'🍷', type:'nightlife', weatherType:'indoor', tags:['food','nightlife'], cost:50, duration:'3h', rating:9.3, preferredSlot:'evening' },
+  ],
+  london: [
+    { id:'lon-1', name:'British Museum', desc:'2 million years of human history under one roof', icon:'🏛️', type:'museum', weatherType:'indoor', tags:['museums','history'], cost:0, duration:'3h', rating:9.3, preferredSlot:'morning' },
+    { id:'lon-2', name:'Tower of London & Tower Bridge', desc:'Medieval fortress & iconic bascule bridge', icon:'🏰', type:'culture', weatherType:'outdoor', tags:['history','architecture'], cost:33, duration:'3h', rating:9.0, preferredSlot:'morning' },
+    { id:'lon-3', name:'Borough Market Food Tour', desc:'Artisan food stalls in a Victorian market hall', icon:'🧀', type:'food', weatherType:'indoor', tags:['food'], cost:35, duration:'2h', rating:9.1, preferredSlot:'afternoon' },
+    { id:'lon-4', name:'Thames Sunset Cruise', desc:'London from the water at golden hour', icon:'🌅', type:'culture', weatherType:'outdoor', tags:['photography'], cost:22, duration:'1.5h', rating:8.8, preferredSlot:'evening' },
+    { id:'lon-5', name:'Shoreditch Street Art Walk', desc:'World-class murals in London\'s creative east end', icon:'🎨', type:'culture', weatherType:'outdoor', tags:['art','photography'], cost:0, duration:'2h', rating:8.6, preferredSlot:'afternoon' },
+  ],
+  dubai: [
+    { id:'dxb-1', name:'Burj Khalifa Observation Deck', desc:'World\'s tallest building – 124th floor views', icon:'🏙️', type:'culture', weatherType:'indoor', tags:['architecture','photography'], cost:45, duration:'2h', rating:9.4, preferredSlot:'afternoon' },
+    { id:'dxb-2', name:'Dubai Souk & Gold Market', desc:'Traditional souks for gold, spices, and perfume', icon:'🪙', type:'shopping', weatherType:'indoor', tags:['shopping','history'], cost:0, duration:'2h', rating:8.7, preferredSlot:'morning' },
+    { id:'dxb-3', name:'Desert Safari & BBQ', desc:'Dune bashing, camel ride, and starlit BBQ dinner', icon:'🐪', type:'adventure', weatherType:'outdoor', tags:['adventure','nature'], cost:85, duration:'6h', rating:9.3, preferredSlot:'afternoon' },
+    { id:'dxb-4', name:'Dubai Frame', desc:'Giant picture frame with old & new Dubai views', icon:'🖼️', type:'culture', weatherType:'indoor', tags:['architecture','photography'], cost:18, duration:'1.5h', rating:8.5, preferredSlot:'morning' },
+    { id:'dxb-5', name:'Skydeck at Address Beach Resort', desc:'Highest infinity pool in the world', icon:'🏊', type:'relaxation', weatherType:'outdoor', tags:['wellness','photography'], cost:30, duration:'2h', rating:9.0, preferredSlot:'afternoon' },
+  ],
+  bali: [
+    { id:'bal-1', name:'Tegallalang Rice Terraces', desc:'UNESCO-listed emerald terraced paddies', icon:'🌾', type:'nature', weatherType:'outdoor', tags:['nature','photography'], cost:5, duration:'2h', rating:9.2, preferredSlot:'morning' },
+    { id:'bal-2', name:'Ubud Monkey Forest', desc:'Sacred sanctuary with 700 Balinese macaques', icon:'🐒', type:'nature', weatherType:'outdoor', tags:['nature'], cost:8, duration:'2h', rating:8.8, preferredSlot:'morning' },
+    { id:'bal-3', name:'Tanah Lot Temple at Sunset', desc:'Sea temple silhouetted against orange skies', icon:'🌅', type:'culture', weatherType:'outdoor', tags:['history','photography'], cost:5, duration:'2h', rating:9.5, preferredSlot:'evening' },
+    { id:'bal-4', name:'Traditional Balinese Cooking Class', desc:'Market visit + cook a 5-course feast', icon:'🍛', type:'food', weatherType:'indoor', tags:['food'], cost:40, duration:'4h', rating:9.4, preferredSlot:'morning' },
+    { id:'bal-5', name:'Seminyak Beach Club', desc:'Sunset cocktails at a legendary beach club', icon:'🍹', type:'relaxation', weatherType:'outdoor', tags:['beaches','wellness'], cost:30, duration:'3h', rating:9.1, preferredSlot:'afternoon' },
+    { id:'bal-6', name:'Mount Batur Sunrise Trek', desc:'Hike an active volcano for sunrise views over the caldera', icon:'🌋', type:'adventure', weatherType:'outdoor', tags:['hiking','nature','photography'], cost:35, duration:'6h', rating:9.6, preferredSlot:'morning' },
+  ],
+  bangkok: [
+    { id:'bkk-1', name:'Grand Palace & Wat Phra Kaew', desc:'Dazzling royal palace complex with Emerald Buddha', icon:'🏯', type:'culture', weatherType:'outdoor', tags:['history','architecture'], cost:15, duration:'3h', rating:9.4, preferredSlot:'morning' },
+    { id:'bkk-2', name:'Chatuchak Weekend Market', desc:'One of the world\'s largest markets – 15,000 stalls', icon:'🛍️', type:'shopping', weatherType:'outdoor', tags:['shopping','food'], cost:0, duration:'4h', rating:8.9, preferredSlot:'morning' },
+    { id:'bkk-3', name:'Chao Phraya River & Temples', desc:'Long-tail boat tour past gilded riverside temples', icon:'⛵', type:'culture', weatherType:'outdoor', tags:['history','photography'], cost:20, duration:'3h', rating:9.1, preferredSlot:'afternoon' },
+    { id:'bkk-4', name:'Thai Street Food Tour – Yaowarat', desc:'Legendary Chinatown street eats after dark', icon:'🦑', type:'food', weatherType:'outdoor', tags:['food'], cost:35, duration:'3h', rating:9.5, preferredSlot:'evening' },
+    { id:'bkk-5', name:'Rooftop Bar – Vertigo', desc:'Open-air cocktails 61 floors above the city', icon:'🍸', type:'nightlife', weatherType:'outdoor', tags:['nightlife','photography'], cost:50, duration:'2h', rating:9.0, preferredSlot:'evening' },
+  ],
+  singapore: [
+    { id:'sin-1', name:'Gardens by the Bay', desc:'Supertrees, Cloud Forest & Flower Dome', icon:'🌸', type:'nature', weatherType:'outdoor', tags:['nature','architecture'], cost:28, duration:'3h', rating:9.5, preferredSlot:'afternoon' },
+    { id:'sin-2', name:'Hawker Centre Food Crawl', desc:'Maxwell or Lau Pa Sat for legendary local dishes', icon:'🍱', type:'food', weatherType:'indoor', tags:['food'], cost:15, duration:'2h', rating:9.6, preferredSlot:'morning' },
+    { id:'sin-3', name:'Marina Bay Sands SkyPark', desc:'Infinity pool and city panoramas 57 floors up', icon:'🏊', type:'relaxation', weatherType:'outdoor', tags:['photography','wellness'], cost:23, duration:'2h', rating:9.2, preferredSlot:'afternoon' },
+    { id:'sin-4', name:'Chinatown & Temple Street', desc:'Heritage shophouses, temples, and street food', icon:'🏮', type:'culture', weatherType:'outdoor', tags:['history','food'], cost:0, duration:'2h', rating:8.8, preferredSlot:'morning' },
+    { id:'sin-5', name:'Night Safari', desc:'World\'s first nocturnal wildlife park', icon:'🦁', type:'nature', weatherType:'outdoor', tags:['nature'], cost:47, duration:'3h', rating:9.1, preferredSlot:'evening' },
+  ],
+  istanbul: [
+    { id:'ist-1', name:'Hagia Sophia', desc:'Byzantine cathedral-turned-mosque of breathtaking scale', icon:'🕌', type:'culture', weatherType:'indoor', tags:['history','architecture'], cost:0, duration:'2h', rating:9.5, preferredSlot:'morning' },
+    { id:'ist-2', name:'Grand Bazaar', desc:'One of the oldest and largest covered markets', icon:'🏺', type:'shopping', weatherType:'indoor', tags:['shopping','history'], cost:0, duration:'3h', rating:8.9, preferredSlot:'morning' },
+    { id:'ist-3', name:'Bosphorus Cruise', desc:'Sail between Europe and Asia at sunset', icon:'⛵', type:'culture', weatherType:'outdoor', tags:['photography','history'], cost:20, duration:'2h', rating:9.3, preferredSlot:'afternoon' },
+    { id:'ist-4', name:'Turkish Hammam Experience', desc:'Traditional bath and oil massage at a historic hammam', icon:'🧖', type:'relaxation', weatherType:'indoor', tags:['wellness'], cost:45, duration:'2h', rating:9.1, preferredSlot:'afternoon' },
+    { id:'ist-5', name:'Balık Ekmek & Karaköy Nightlife', desc:'Fish sandwiches on the Golden Horn, then cocktail bars', icon:'🐟', type:'food', weatherType:'outdoor', tags:['food','nightlife'], cost:35, duration:'3h', rating:8.8, preferredSlot:'evening' },
+  ],
+  default: [
+    { id:'def-1', name:'City Walking Tour', desc:'Discover the heart of the city with a local guide', icon:'🚶', type:'culture', weatherType:'outdoor', tags:['history','architecture'], cost:20, duration:'3h', rating:8.5, preferredSlot:'morning' },
+    { id:'def-2', name:'Local Food Market', desc:'Sample the best of local cuisine and artisan produce', icon:'🥘', type:'food', weatherType:'indoor', tags:['food','shopping'], cost:25, duration:'2h', rating:8.8, preferredSlot:'morning' },
+    { id:'def-3', name:'City Museum', desc:'Explore art, history, and culture in a world-class museum', icon:'🏛️', type:'museum', weatherType:'indoor', tags:['museums','history','art'], cost:15, duration:'2.5h', rating:8.6, preferredSlot:'afternoon' },
+    { id:'def-4', name:'Scenic Viewpoint', desc:'Panoramic views of the city from the best vantage point', icon:'🌆', type:'culture', weatherType:'outdoor', tags:['photography'], cost:10, duration:'1.5h', rating:8.7, preferredSlot:'afternoon' },
+    { id:'def-5', name:'Evening Dining Experience', desc:'Authentic local dinner at a highly rated restaurant', icon:'🍽️', type:'food', weatherType:'indoor', tags:['food'], cost:45, duration:'2h', rating:9.0, preferredSlot:'evening' },
+    { id:'def-6', name:'Nature Park Walk', desc:'Peaceful green spaces and local wildlife', icon:'🌿', type:'nature', weatherType:'outdoor', tags:['nature','photography'], cost:0, duration:'2h', rating:8.4, preferredSlot:'morning' },
+  ],
+};
